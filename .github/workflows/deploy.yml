@@ -31,6 +31,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build and Test Quarkus Application
+        run: |
           mvn package
           java -jar ./target/*-runner.jar
           curl -I -X GET "http://localhost:8080/health" -w "\n"
