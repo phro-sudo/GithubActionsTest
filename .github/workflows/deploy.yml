@@ -31,9 +31,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build and Test Quarkus Application
-        run: |
-          mvn -B -U -DskipTests=true -Dquarkus.package.type=uber-jar clean package
-          java -jar ./target/*-runner.jar &
-          sleep 10
+          mvn package
+          java -jar ./target/*-runner.jar
           curl -I -X GET "http://localhost:8080/health" -w "\n"
           curl -I -X GET "http://localhost:8080/hello" -w "\n"
