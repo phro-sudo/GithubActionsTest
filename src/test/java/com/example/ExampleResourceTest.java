@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class ExampleResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testPrimeEndpoint() {
         given()
                 .when().get("/prime/isPrime/10")
                 .then()
