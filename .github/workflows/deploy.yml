@@ -33,4 +33,3 @@ jobs:
       - name: Build and Test Quarkus Application
         run: |
           ./mvnw package
-          java -jar ./target/quarkus-app/quarkus-run.jar
