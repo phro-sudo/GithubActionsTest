@@ -29,6 +29,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          
+      - name: Initialise Postgres
+        run: |
+          docker exec -it postgres psql -U postgres -c "CREATE TABLE IF NOT EXISTS public.Primes (number numeric(1000,0) NOT NULL, prime boolean NOT NULL, CONSTRAINT Primes_pkey PRIMARY KEY (number));"
 
       - name: Build and Test Quarkus Application
         run: |
