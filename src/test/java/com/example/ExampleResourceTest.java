@@ -34,6 +34,30 @@ public class ExampleResourceTest {
                 .then()
                 .statusCode(200)
                 .body(is("true"));
+
+        given()
+                .when().get("/prime/isPrime/174032849634905874578591563253")
+                .then()
+                .statusCode(200)
+                .body(is("true"));
+
+        given()
+                .when().get("/prime/isPrime/174032849634905874578591563253")
+                .then()
+                .statusCode(200)
+                .body(is("true"));
+
+        given()
+                .when().get("/prime/isPrime/174032849634905874578591563253")
+                .then()
+                .statusCode(200)
+                .body(is("true"));
+
+        given()
+                .when().get("/prime/isPrime/174032849634905874578591563253")
+                .then()
+                .statusCode(200)
+                .body(is("true"));
     }
 
 }
