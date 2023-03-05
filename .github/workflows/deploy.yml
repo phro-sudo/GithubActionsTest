@@ -1,0 +1,44 @@
+name: Quarkus Postgres CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: prime_calculator
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          
+      - name: Set up Maven
+        run: |
+          wget -q https://downloads.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip
+          unzip -q apache-maven-3.8.4-bin.zip
+          export PATH=$PWD/apache-maven-3.8.4/bin:$PATH
+
+      - name: Build and Test Quarkus Application
+        run: |
+          mvn -B -U -DskipTests=true -Dquarkus.package.type=uber-jar clean package
+          java -jar ./target/*-runner.jar &
+          sleep 10
+          curl -I -X GET "http://localhost:8080/health" -w "\n"
+          curl -I -X GET "http://localhost:8080/hello" -w "\n"
