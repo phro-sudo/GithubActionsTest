@@ -1,4 +1,4 @@
-name: Quarkus Postgres CI
+name: Automated Testing
 
 on:
   push:
@@ -9,10 +9,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-          java_version: [11, 17]
           
     services:
       postgres:
@@ -31,7 +27,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: ${{ matrix.java_version }}
+          java-version: '17'
           distribution: 'temurin'
 
       - name: Build and Test Quarkus Application
