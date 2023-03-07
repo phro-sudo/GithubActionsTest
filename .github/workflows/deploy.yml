@@ -1,4 +1,4 @@
-name: Quarkus Postgres CI
+name: Automated Testing
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
+          
     services:
       postgres:
         image: postgres:latest
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK 17
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'

@@ -1,0 +1,40 @@
+
+name: Publish package to the Maven Central Repository and GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+          
+jobs:
+
+  publish-to-github:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_PASSWORD:  ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+    
+    permissions:
+      contents: read
+      packages: write
+      
+    steps:
+      - uses: actions/checkout@v3
+          
+      - name: Set up Java for publishing to GitHub Packages
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Publish to GitHub Packages
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
