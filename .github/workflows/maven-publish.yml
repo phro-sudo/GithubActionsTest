@@ -38,6 +38,6 @@ jobs:
         run: mvn test
 
       - name: Publish to GitHub Packages
-        run: mvn --batch-mode deploy
+        run: mvn --batch-mode deploy -DskipTests
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
