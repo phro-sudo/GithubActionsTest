@@ -8,7 +8,19 @@ on:
           
 jobs:
 
+  dependency-review:
+    
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+        
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v2
+
   publish-to-github:
+    needs: dependency-review
     runs-on: ubuntu-latest
     
     services:
