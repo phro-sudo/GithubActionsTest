@@ -18,6 +18,9 @@ jobs:
         
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v3
+        with:
+          fail-on-severity: moderate
+          deny-licenses: LGPL-2.0, BSD-2-Clause
 
   publish-to-github:
     needs: dependency-review
