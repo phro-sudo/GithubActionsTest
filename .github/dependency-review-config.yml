@@ -1,0 +1,26 @@
+
+# Configuration file for GitHub Dependency Review
+
+# Specify the package ecosystems to scan for dependencies
+package-ecosystems:
+  - "npm"
+  - "maven"
+  - "pip"
+
+# Specify the directories to exclude from scanning
+excluded-paths:
+  - "node_modules"
+  - "vendor"
+  - "build"
+  - "dist"
+
+# Specify the file extensions to exclude from scanning
+excluded-file-extensions:
+  - ".log"
+  - ".md"
+  - ".txt"
+
+# Specify the package update schedule for automatic security updates
+schedule:
+  security:
+    - "weekly"
