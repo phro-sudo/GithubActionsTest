@@ -22,8 +22,16 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
     
-      - name: Dependency Review
-        run: mvn site
+      - name: Run Maven Dependency Check
+        uses: abhinavsharma629/maven-dependency-check-action@v1.1
+        with:
+          path: '.'
+          format: 'HTML'
+          outputDirectory: 'reports/'
+          failOnError: 'true'
+          skip: 'false'
+          excludeTestScope: 'true'
+
 
   publish-to-github:
     needs: dependency-review
