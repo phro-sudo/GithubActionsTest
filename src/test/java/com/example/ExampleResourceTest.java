@@ -35,6 +35,12 @@ public class ExampleResourceTest {
                 .statusCode(200)
                 .body(is("true"));
 
+        given()
+                .when().get("/prime/isPrime/10")
+                .then()
+                .statusCode(200)
+                .body(is("true"));
+
     }
 
 }
