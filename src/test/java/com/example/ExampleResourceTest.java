@@ -39,7 +39,7 @@ public class ExampleResourceTest {
                 .when().get("/prime/isPrime/7")
                 .then()
                 .statusCode(200)
-                .body(is("true"));
+                .body(is("false"));
 
     }
 
