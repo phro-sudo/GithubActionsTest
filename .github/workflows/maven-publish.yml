@@ -24,7 +24,7 @@ jobs:
     steps:
     
       - name: Checkout and Setup Java 17
-        uses: phro-sudo/GithubActionsTest/.github/actions/MySetup@main
+        uses: phro-sudo/GithubActionsTest/.github/actions/mysetup@main
         with:
           java-version: '17'
     
@@ -53,7 +53,7 @@ jobs:
       
     steps:
       - name: Checkout and Setup Java 17
-        uses: phro-sudo/GithubActionsTest/.github/actions/MySetup@main
+        uses: phro-sudo/GithubActionsTest/.github/actions/mysetup@main
         with:
           java-version: '17'
 
