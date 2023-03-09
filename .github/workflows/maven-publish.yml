@@ -8,8 +8,8 @@ on:
           
 jobs:
 
-  test-code:
-  
+  start-db:
+    runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:latest
@@ -19,7 +19,12 @@ jobs:
           POSTGRES_DB: postgres
         ports:
           - 5432:5432
-    
+    steps:
+      - name: Wait for db to start
+        run: sleep 10s
+
+  test-code:
+    needs: start-db
     runs-on: ubuntu-latest
     steps:
     
@@ -37,7 +42,9 @@ jobs:
 
 
   publish-to-github:
-    needs: test-code
+    needs:
+      - start-db
+      - test-code
     runs-on: ubuntu-latest
     
     services:
