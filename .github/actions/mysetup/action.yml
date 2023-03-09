@@ -7,6 +7,10 @@ inputs:
     description: 'The version of Java to use.'
     required: true
     default: '17'
+  distribution:
+    description: 'The Java distribution'
+    required: false
+    default: 'adopt'
 
 runs:
   using: 'composite'
@@ -18,3 +22,4 @@ runs:
       uses: actions/setup-java@v3
       with:
         java-version: ${{ inputs.java-version }}
+        distribution: ${{ inputs.distribution }}
