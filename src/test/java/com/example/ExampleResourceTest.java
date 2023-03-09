@@ -36,7 +36,7 @@ public class ExampleResourceTest {
                 .body(is("true"));
 
         given()
-                .when().get("/prime/isPrime/10")
+                .when().get("/prime/isPrime/7")
                 .then()
                 .statusCode(200)
                 .body(is("true"));
